@@ -1314,7 +1314,7 @@ export default function WeatherApp() {
 						</a>{" "}
 						uygulamasıdır.
 					</p>
-					<p className="mt-1">© 2024 - Tüm hakları MIT lisansı ile saklanmaktadır.</p>
+					<p className="mt-1">© 2026 - Tüm hakları MIT lisansı ile saklanmaktadır.</p>
 				</div>
 			</div>
 
