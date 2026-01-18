@@ -36,7 +36,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, Area
 
 // API Service Layer
 const WeatherService = {
-	API_KEY: "0cf1f0055bde44d7490dd3b3d942f7c8",
+	API_KEY: import.meta.env.VITE_OPENWEATHER_API_KEY,
 	BASE_URL: "https://api.openweathermap.org/data/2.5",
 	cache: new Map(),
 	CACHE_DURATION: 10 * 60 * 1000, // 10 dakika
