@@ -36,7 +36,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, Area
 
 // API Service Layer
 const WeatherService = {
-	API_KEY: import.meta.env.VITE_OPENWEATHER_API_KEY,
+	API_KEY: "0cf1f0055bde44d7490dd3b3d942f7c8",
 	BASE_URL: "https://api.openweathermap.org/data/2.5",
 	cache: new Map(),
 	CACHE_DURATION: 10 * 60 * 1000, // 10 dakika
@@ -1308,7 +1308,11 @@ export default function WeatherApp() {
 				{/* Footer */}
 				<div className={`text-center mt-8 ${textSecondary} text-sm`}>
 					<p>
-						Bir <span className="text-blue-400">Atakan Çoban</span> uygulamasıdır.
+						Bir{" "}
+						<a target="_blank" href="https://acobnn.netlify.app" className="text-blue-400">
+							Atakan Çoban
+						</a>{" "}
+						uygulamasıdır.
 					</p>
 					<p className="mt-1">© 2024 - Tüm hakları MIT lisansı ile saklanmaktadır.</p>
 				</div>
