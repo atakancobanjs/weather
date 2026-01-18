@@ -42,8 +42,8 @@ const WeatherService = {
 	CACHE_DURATION: 10 * 60 * 1000, // 10 dakika
 
 	async fetchWithCache(url, cacheKey) {
-		const cached = this.cache.get(cacheKey);
-		if (cached && Date.now() - cached.timestamp < this.CACHE_DURATION) {
+		const cached = WeatherService.cache.get(cacheKey);
+		if (cached && Date.now() - cached.timestamp < WeatherService.CACHE_DURATION) {
 			return cached.data;
 		}
 
@@ -51,33 +51,33 @@ const WeatherService = {
 		if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
 		const data = await response.json();
-		this.cache.set(cacheKey, { data, timestamp: Date.now() });
+		WeatherService.cache.set(cacheKey, { data, timestamp: Date.now() });
 		return data;
 	},
 
 	async getCurrentWeather(city) {
-		const url = `${this.BASE_URL}/weather?q=${city}&appid=${this.API_KEY}&units=metric&lang=tr`;
-		return this.fetchWithCache(url, `weather_${city}`);
+		const url = `${WeatherService.BASE_URL}/weather?q=${city}&appid=${WeatherService.API_KEY}&units=metric&lang=tr`;
+		return WeatherService.fetchWithCache(url, `weather_${city}`);
 	},
 
 	async getForecast(city) {
-		const url = `${this.BASE_URL}/forecast?q=${city}&appid=${this.API_KEY}&units=metric&lang=tr`;
-		return this.fetchWithCache(url, `forecast_${city}`);
+		const url = `${WeatherService.BASE_URL}/forecast?q=${city}&appid=${WeatherService.API_KEY}&units=metric&lang=tr`;
+		return WeatherService.fetchWithCache(url, `forecast_${city}`);
 	},
 
 	async getAirQuality(lat, lon) {
-		const url = `${this.BASE_URL}/air_pollution?lat=${lat}&lon=${lon}&appid=${this.API_KEY}`;
-		return this.fetchWithCache(url, `aqi_${lat}_${lon}`);
+		const url = `${WeatherService.BASE_URL}/air_pollution?lat=${lat}&lon=${lon}&appid=${WeatherService.API_KEY}`;
+		return WeatherService.fetchWithCache(url, `aqi_${lat}_${lon}`);
 	},
 
 	async getWeatherByCoords(lat, lon) {
-		const url = `${this.BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${this.API_KEY}&units=metric&lang=tr`;
-		return this.fetchWithCache(url, `weather_${lat}_${lon}`);
+		const url = `${WeatherService.BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${WeatherService.API_KEY}&units=metric&lang=tr`;
+		return WeatherService.fetchWithCache(url, `weather_${lat}_${lon}`);
 	},
 
 	async getForecastByCoords(lat, lon) {
-		const url = `${this.BASE_URL}/forecast?lat=${lat}&lon=${lon}&appid=${this.API_KEY}&units=metric&lang=tr`;
-		return this.fetchWithCache(url, `forecast_${lat}_${lon}`);
+		const url = `${WeatherService.BASE_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WeatherService.API_KEY}&units=metric&lang=tr`;
+		return WeatherService.fetchWithCache(url, `forecast_${lat}_${lon}`);
 	},
 };
 
